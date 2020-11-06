@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: 50px auto 50px;
+    }
+
+    .grid-item {
+      font-size: 30px;
+    }
+
+    .container {
+      border-radius: 5px;
+      height: 800px;
+      background-color: #d6d5d5;
+      /* red with opacity */
+      background-color: rgba(255, 255, 255);
+      /* red with opacity */
+    }
+
+    .shadow-l {
+      box-shadow: 1px 0px 2px gray;
+    }
+
+    .shadow-1 {
+      box-shadow: 1px 0px 2px gray;
+    }
+
+    .white {
+      margin: 15px;
+      background-color: rgba(255, 255, 255, 0.3);
+      /* red with opacity */
+    }
+
+    body {
+      background-image: url("./static/woods-blur.png");
+      background-size: cover;
+    }
+
+    .logout {
+      justify-self: end;
+    }
+
+    .inner-c {
+      display: grid;
+      grid-template-columns: 130px 130px 100px auto 100px;
+    }
+
+    .see-logins {
+      grid-column-start: 1;
+    }
+
+    .admin {
+      grid-column-start: 2;
+    }
+
+    .logout {
+      grid-column-start: 5;
+      grid-column-end: 6;
+    }
+
+    .button {
+      display: block;
+      width: 100%;
+      padding: 6px;
+      font-size: 12px;
+    }
+
+    .container-login-table {
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 1000px;
+      overflow: scroll;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    h2 small {
+      font-size: 0.5em;
+    }
+
+    .responsive-table li {
+      border-radius: 3px;
+      padding: 4px 4px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .responsive-table .table-header {
+      background-color: #4E4E4E;
+      font-size: 14px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .responsive-table .table-row {
+      background-color: #ffffff;
+      box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.3);
+    }
+
+    .responsive-table .col-1 {
+      flex-basis: 10%;
+    }
+
+    .responsive-table .col-2 {
+      flex-basis: 40%;
+    }
+
+    .responsive-table .col-3 {
+      flex-basis: 25%;
+    }
+
+    .responsive-table .col-4 {
+      flex-basis: 25%;
+    }
+
+    @media all and (max-width: 767px) {
+      .responsive-table .table-header {
+        display: none;
+      }
+
+      .responsive-table li {
+        display: block;
+      }
+
+      .responsive-table .col {
+        flex-basis: 100%;
+      }
+
+      .responsive-table .col {
+        display: flex;
+        padding: 10px 0;
+      }
+
+      .responsive-table .col:before {
+        color: #6C7A89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+
+    .seperator {
+      height: 5px;
+    }
+
+    /* Dropdown Button */
+    .dropbtn {
+      display: block;
+      width: 100%;
+      padding: 6px;
+      font-size: 12px;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    /* Show the dropdown menu on hover */
+    .admin:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .admin:hover .dropbtn {
+      background-color: #DCDCDC;
+    }
+
+    /* end of Dropdown */
+
+    /* form */
+    form {
+      max-width: 420px;
+      margin: 50px auto;
+    }
+
+    .feedback-input {
+      color: gray;
+      font-family: Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      border-radius: 5px;
+      line-height: 22px;
+      background-color: transparent;
+      border: 2px solid #000000;
+      transition: all 0.3s;
+      padding: 13px;
+      margin-bottom: 15px;
+      width: 100%;
+      box-sizing: border-box;
+      outline: 0;
+    }
+
+    .feedback-input:focus {
+      border: 2px solid #CC4949;
+    }
+
+    textarea {
+      height: 200px;
+      line-height: 150%;
+      resize: vertical;
+    }
+
+    .issue-command-class {
+      font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+      width: 100%;
+      background: gray;
+      border-radius: 5px;
+      border: 0;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      transition: all 0.3s;
+      margin-top: -4px;
+      font-weight: 700;
+    }
+
+    .issue-command-class:hover {
+      background: #aeb7b7;
+    }
+
+    .push-user {
+      display: none;
+    }
+
+    .add-user {
+      display: none;
+    }
+
+    .add-user-grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+
+    .instruction-text {
+      max-width: 75%;
+      font-family: 'Helvetica,', Arial, Helvetica, sans-serif;
+      color: black;
+      font-size: 20px;
+      padding-top: 50px;
+      padding-bottom: 10px;
+    }
+
+    .get-users {
+      display: none;
+    }
+
+    .get-all-devices {
+      display: none;
+    }
+
+    .get-report {
+      display: block;
+    }
+
+    .get-all-devices-grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+
+    .get-all-users-grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .get-all-users {
+      display: none;
+    }
+
+    .get-users-grid {
+      display: none;
+    }
+
+    .modify-user {
+      display: none;
+    }
+
+    .delete-specific-user {
+      display: none;
+    }
+
+    .list-all-users {
+      display: none;
+    }
+
+    .force-sync {
+      display: none;
+    }
+
+    .overflow {
+      max-height: 400px;
+      overflow: auto;
+      border: 2px solid #ddd;
+      margin: 20px;
+      padding: 20px;
+    }
+
+     .overflow-2 {
+      max-height: 500px;
+      overflow: auto;
+    }
+
+   .overflow-3 {
+      max-height: 500px;
+      overflow: auto;
+      border: 1px solid #ddd;
+    }
+
+    #myInput {
+      background-image: url('/css/searchicon.png');
+      background-position: 10px 12px;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+
+    #myUL {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #myUL li a {
+      border: 1px solid #ddd;
+      margin-top: -1px;
+      /* Prevent double borders */
+      background-color: #f6f6f6;
+      padding: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      color: black;
+      display: block
+    }
+
+    #shift_info td,
+    #shift_info th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .generate-grid {
+      margin: auto;
+      width: 80%;
+      border: 3px solid green;
+      padding: 10px;
+    }
+
+    .tableFormat {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      overflow: auto;
+    }
+
+    .tableFormat td,
+    .tableFormat th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .tableFormat tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .tableFormat tr:hover {
+      background-color: #ddd;
+    }
+
+    .tableFormat th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .center-pad {
+      padding: 75px;
+    }
+
+    .littleBox {
+      width: 500px;
+    }
+  </style>
+
+  <div class="grid-container">
+    <div class="grid-item"></div>
+    <div>
+      <div class="white inner-c">
+        <div class="About"><button class="button" onclick="html_update('get_report')">Get Report</button></div>
+        <div class="admin">
+          <button class="dropbtn">Administrative</button>
+          <div class="dropdown-content">
+            <a href="#" onclick="html_update('add_user')">Add New User</a>
+            <a href="#" onclick="html_update('modify_user')">Modify User</a>
+            <a href="#" onclick="html_update('list_users')">List Users</a>
+            <a href="#" onclick="html_update('get_all_devices')">Misc Admin</a>
+            <a href="#" onclick="html_update('push_user')">Push Users To Device</a>
+            <a href="#" onclick="html_update('get_users_on_device')">Get Users Per Device</a>
+            <a href="#" onclick="html_update('delete_specific_user')">Delete Specific User(s)</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="content-display">
+        <div class="seperator"></div>
+
+        <div class="add-user" id="add-user">
+          <div class="add-user-grid">
+            <form>
+              <input id="emp_name" name="name" type="text" class="feedback-input" placeholder="Employee Name" />
+              <input id="emp_email" name="email" type="email" class="feedback-input" placeholder="Employee Email" />
+              <input id="emp_salary" name="salary" type="number" min="0" max="250000" class="feedback-input"
+                placeholder="Yearly Wage" />
+              <textarea readonly id="add_cmd_rslt" name="text" class="feedback-input"
+                placeholder="Command Result"></textarea>
+              <input class="issue-command-class" type="button" value="Add User" onclick="add_user('add_user')" />
+            </form>
+            <div class="instruction-text">
+
+              <p> 
+                Fill in the employee Salary and shift information. Leave the shift times blank if the employee
+                Is not expected to work on a weekday    
+              </p>
+
+              <br>
+              <br>
+              <table id="shift_info">
+                <tr>
+                  <th>Day</th>
+                  <th>Shift Start</th>
+                  <th>Shift End</th>
+                  <th>Employee works this day</th>
+                </tr>
+                <tr>
+                  <td>Monday</td>
+                  <td><input type="time" id="time_monday_s" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_monday_e" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="monday_time_valid" class="time_valid"></td>
+                </tr>
+                <tr>
+                  <td>Tuesday</td>
+                  <td><input type="time" id="time_tuesday_s" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_tuesday_e" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="tuesday_time_valid" class="time_valid"></td>
+                </tr>
+                <tr>
+                  <td>Wensday</td>
+                  <td><input type="time" id="time_wensday_s" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_wensday_e" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="wensday_time_valid" class="time_valid"></td>
+                </tr>
+                <tr>
+                  <td>Thursday</td>
+                  <td><input type="time" id="time_thursday_s" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_thursday_e" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="thursday_time_valid" class="time_valid"></td>
+                </tr>
+                <tr>
+                  <td>Friday</td>
+                  <td><input type="time" id="time_friday_s" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_friday_e" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="friday_time_valid" class="time_valid"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="modify-user" id="modify-user">
+          <div class="add-user-grid">
+            <form>
+              <div id="modify-user-js" class="feedback-input">
+                <label for="Users">Select a user to modify:</label>
+                <select name="user" id="user_select">
+                </select>
+              </div>
+              <input id="emp_email_u" name="email" type="email" class="feedback-input" placeholder="Employee Email" />
+              <input id="emp_salary_u" name="salary" type="number" step="0.01" min="0" max="250" class="feedback-input"
+                placeholder="Hourly Wage" />
+              <textarea readonly id="update_cmd_rslt" name="text" class="feedback-input"
+                placeholder="Command Result"></textarea>
+              <input class="issue-command-class" type="button" value="Update User" onclick="modify_user()" />
+            </form>
+            <div class="instruction-text">
+
+              <p> Instruct the User to put their thumb on the device when prompted and follow the instructions.
+                Also, fill in the employee Salary and shift information. Leave the shift times blank if the employee
+                Is not expected to work. on a weekday </p>
+
+              <br>
+              <br>
+              <table id="shift_info">
+                <tr>
+                  <th>Day</th>
+                  <th>Shift Start</th>
+                  <th>Shift End</th>
+                  <th>Employee works this day</th>
+                </tr>
+                <tr>
+                  <td>Monday</td>
+                  <td><input type="time" id="time_monday_s_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_monday_e_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="monday_time_valid_u" class="time_valid_u"></td>
+                </tr>
+                <tr>
+                  <td>Tuesday</td>
+                  <td><input type="time" id="time_tuesday_s_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_tuesday_e_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="tuesday_time_valid_u" class="time_valid_u"></td>
+                </tr>
+                <tr>
+                  <td>Wensday</td>
+                  <td><input type="time" id="time_wensday_s_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_wensday_e_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="wensday_time_valid_u" class="time_valid_u"></td>
+                </tr>
+                <tr>
+                  <td>Thursday</td>
+                  <td><input type="time" id="time_thursday_s_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_thursday_e_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="thursday_time_valid_u" class="time_valid_u"></td>
+                </tr>
+                <tr>
+                  <td>Friday</td>
+                  <td><input type="time" id="time_friday_s_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="time" id="time_friday_e_u" name="appt" min="09:00" max="12:00" required></td>
+                  <td><input type="checkbox" id="friday_time_valid_u" class="time_valid_u"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      <div class="list-all-users" id="list-all-users">
+          <div class="list-all-users">
+            <div>
+              <div class="center-pad">
+                <div class="overflow">
+                  <table class="tableFormat" id="all_users_list">
+                    <tr>
+                      <th>Employee</th>
+                      <th>Email</th>
+                      <th>Salary</th>
+                      <th>Monday</th>
+                      <th>Tuesday</th>
+                      <th>Wensday</th>
+                      <th>Thursday</th>
+                      <th>Friday</th>
+                    </tr>
+                    <tr>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            
+            </div>
+            <div>
+              <div class="center-pad ">This is a list of users on the central database, it does not reflect users that have been added to specific devices.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="get-all-devices" id="get-all-devices">
+          <div class="add-user-grid center-pad">
+            <div>
+
+              <div class="littleBox">
+                <div class="feedback-input"> <br>Force the system to syncronize. Devices will clone the central database
+                  of users and shed and users that are not part of the central database.</br>
+                  <button type="button" onclick="force_sync()">Force Sync</button>
+                </div>
+              </div>
+
+              <div class="littleBox">
+                <div class="feedback-input" id="deviceId_replace_box"> <br>Fetch a new deviceId from the database, BE CAREFUL,
+                  if you two devices have the same deviceId the system will crash!</br>
+                  <button type="button" onclick="generate_new_deviceId()">Generate deviceId</button>
+                </div>
+              </div>
+
+              <div class="littleBox">
+                <div class="feedback-input"> <br> Hard Reset, will restart Back End</br>
+                  <button type="button" onclick="hard_reset()">Hard Reset</button>
+                </div>
+              </div>
+          </div>
+
+            <div>
+              <div class="feedback-input"> Active Devices </div>
+              <div class="overflow-2">
+              <table class="tableFormat" id="active_devices">
+                <tr>
+                  <th>Device Name</th>
+                  <th>Device Id</th>
+                  <th>Device Firmware Version</th>
+                  <th>Uptime</th>
+                  <th>Status</th>
+                </tr>
+                <tr>
+                </tr>
+              </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="push-user" id="push-user">
+          <div class="add-user-grid">
+            <form>
+              <div class="feedback-input">
+                <label for="Users">Select a user to Push to device:</label>
+                <select name="user" id="user_select_p">
+                </select>
+              </div>
+              <div class="feedback-input">
+                <label for="Users">Select Device:</label>
+                <select name="device" id="push_device"></select>
+              </div>
+
+              <div class="feedback-input">
+                <p>Replace user?</p>
+                <input type="checkbox" id="replace_user" name="replace" value="replace">
+                <label for="replace">replace</label><br>
+              </div>
+
+              <textarea readonly id="push_cmd_rslt" name="text" class="feedback-input"
+                placeholder="Command Result"></textarea>
+              <input class="issue-command-class" type="button" value="Push User to device" onclick="push_user()" />
+            </form>
+            <div class="instruction-text">
+              <p> Instruct the User to put their thumb on the device when prompted and follow the instructions. </p>
+               
+              <p>
+                  If a user exists on a device, but during the initial sign up the device did not get a good capture of
+                  of their thumb, you can check "replace user" to push user again. Note that if they fail to sign up, they will
+                  be delted from the device. So Make sure they are succesffuly added. </p>
+              <p>
+                  After a user is added, there is a period of time (120 seconds) where they can sign in/out without these being
+                  added to the accounting spread sheets. This is to make sure the device can recognzie the employee. 
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="get-users" id="get-users">
+          <div class="add-user-grid">
+            <form>
+              <div class="feedback-input">
+                <p> Select a device to see which users have been added to it </p>
+              </div>
+
+              <div class="feedback-input">
+                <label for="Users">Select device:</label>
+                <select name="device" id="get_user_device"></select>
+              </div>
+
+              <textarea readonly id="fetch_cmd_rslt" name="text" class="feedback-input"
+                placeholder="Command Result"></textarea>
+              <input class="issue-command-class" type="button" value="Fetch Added Users From Device"
+                onclick="fetch_users_per_device()" />
+            </form>
+            <div class="instruction-text overflow-2">
+              <div><b> List of users on device... </b>
+                <div>
+                  <table class="tableFormat" id="usersOnDevice">
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                    </tr>
+                    <tr></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="get-report" id="get-report">
+          <div class="add-user-grid">
+            <form>
+              <div class="feedback-input">
+                <label for="Users">Select Year:</label>
+                <input type="number" id="report_year">
+              </div>
+
+              <div class="feedback-input">
+                <label for="Users">Select month:</label>
+                <select name="month" id="report_month">
+                  <option value="1">Jan</option>
+                  <option value="2">Feb</option>
+                  <option value="3">March</option>
+                  <option value="4">April</option>
+                  <option value="5">May</option>
+                  <option value="6">June</option>
+                  <option value="7">July</option>
+                  <option value="8">Aug</option>
+                  <option value="9">Sep</option>
+                  <option value="10">Oct</option>
+                  <option value="11">Nov</option>
+                  <option value="12">Dec</option>
+                </select>
+              </div>
+
+              <div class="feedback-input">
+                <label for="pay_period">Please chose Pay Period:</label>
+                <select name="Pay Period" id="report_period">
+                  <option value="1">1st - 15th</option>
+                  <option value="16">16th - End of Month</option>
+                </select>
+              </div>
+
+              <textarea readonly id="generate_cmd_rslt" name="text" class="feedback-input"
+                placeholder="Command Result"></textarea>
+              <input class="issue-command-class" type="button" value="Generate Report" onclick="generate_report()" />
+            </form>
+            <div class="instruction-text overflow-3">
+
+              <p> If an emplyee is supposed to work on a day, their work will be judged versus their expted shift </p>                                    
+              
+              <p>
+              if they.. 
+              <br><b> Are supposed to work and:</b>                                                                                                           
+                  <ul>
+                    <li> 1)login, logout in a sensible manner, their time worked is counted</li>                                                                        
+                    <li> 2) forget to do either login, or logout, logout/login time that is missing will be taken from shift dabatase and the excel document will flag this</li> 
+                    <li> 3) not logged in AND logged out, the excel document will show 0 time/salary will be added to their total hours worked </li>                                                                                 </ul>
+              <br><b>Are not supposed to work and: </b>
+                  <ul>
+                    <li>1) login, logout in a sensible manner, their time worked is shown in the document and counted, but the excel document will flag this</li>                                             
+                    <li>2) missing either login or logout time, flagged as error, no time/salary will be added to their total hours worked</li>
+                  </ul>
+               <br> worked a negative amount of time, (logged in before they logged out), this is flagged as an error, 0 time will be added to tehir total hours worked                                 
+               <p> for multiple login/logout cases, the earliest login is considered and the latest logout time for the tally calculations </p>                                              
+
+                  <p> Once a report is generated, if an employee has worked LESS than what they are supposed to, on the Summary (first page) of the excel document, the user
+                  will be highligted in RED </p>
+                  
+                  <p> <b>NOTE</b> If a user is ddeleted, they will not be shown in the generated report anymore. Past the current pay-period, reports will not be regenerated, 
+                  they will be fetched from an archive. This means that if you delete a user and get a previous report, the deleted user will still show up.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="delete-specific-user" id="delete-specific-user">
+              <div class="add-user-grid">
+                <div>
+                  <div class="center-pad">
+                    <div class="overflow">
+                      <div id="dynamicRadioBar"></div>
+                    </div>
+                    <button type="button" onclick="delete_specific_user()">Delete User (Can't be un-done!)</button>
+                  </div>
+                </div>
+                <div>
+                  <div class="center-pad ">This will delete users from the central database. Each device in the field
+                    will syncronize to the central database once a week (sometime on Sunday)
+            
+                    if you want to immediatly add a user you just deleted, you must force-sync (Administrative -> Misc Admin -> Force sync).
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="grid-item"></div>
+  </div>
+  </div>
+
+
+  <script>
+    const IP = 'localhost:8090'
+    const DL = "http:\/\/" + IP + '\/download'
+    const HOME = "http:\/\/" + IP + '\/home'
+    const URL = "ws:\/\/" + IP + '\/upgrade';
+
+    const KIND_GET_USER = 0;
+    const KIND_NOT_USED_0 = 1;
+    const KIND_COMMAND_RESPONSE = 2;
+    const KIND_GET_DEVICES = 3;
+    const KIND_GET_USERS_PER_DEVICE = 4;
+
+    const ADD_USER_CMD = (0)
+    const DELETE_ALL_USERS_CMD = (1)
+    const GET_ALL_USERS_CMD = (2)
+    const UPDATE_USER_CMD = (5)
+    const PUSH_USER_CMD = (6)
+    const GENERATE_REPORT = (7)
+    const GET_ALL_DEVICES = (8)
+    const GET_ALL_USERS_ON_DEVICE = (9)
+    const FORCE_SYNC = (10)
+    const GET_ALL_USERS_ON_DEVICE_FINAL = (11) //updates cmd_reslt
+    const GENERATE_DEVICE_ID = (12)
+
+    // Global variables
+    var what_requested_devices = ""
+    var what_requested_all_users = ""
+    var dlFileName = ""
+
+    function download(fileName) {
+      var url = DL + "?file=" + fileName
+      console.log(url)
+      window.location.href = url
+    }
+
+    function sleep(time) {
+
+      var start = new Date();
+      var now;
+
+      while (true) {
+        now = new Date();
+        if (now - start >= time) {
+          break;
+        }
+      }
+    }
+
+    function html_update(new_page) {
+
+      console.log("displaying : ", new_page)
+      var x = document.getElementById("content-display");
+      let y = x.querySelectorAll("*");
+      for (i = 0; i < y.length; i++) {
+        y[i].classList.add("hide");
+      }
+
+      if (new_page === 'get_report') {
+        let y = document.getElementById("get-report");
+
+        /* set current year for dropdown */
+        var dt = new Date();
+        document.getElementById("report_year").value = dt.getFullYear();
+        document.getElementById("report_month").value = dt.getMonth();
+        if (dt.getDate() > 16) {
+          document.getElementById("report_period").value = 16;
+        } else {
+          document.getElementById("report_period").value = 1;
+        }
+
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("get-report");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+
+      if (new_page === 'get_users_on_device') {
+        console.log("SHowing all users per device")
+        get_all_devices()
+        what_requested_devices = "get-users-from-device"
+        let y = document.getElementById("get-users");
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          console.log("here")
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("get-users");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+
+      if (new_page === 'add_user') {
+        let y = document.getElementById("add-user");
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("add-user");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+
+      if (new_page === 'list_users') {
+        clear_output()
+        what_requested_all_users = "list_users"
+        get_all_users()
+        let y = document.getElementById("list-all-users");
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("list-all-users");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+
+      if (new_page === 'modify_user') {
+        get_all_users()
+        what_requested_all_users = "modify_user"
+        let y = document.getElementById("modify-user");
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("modify-user");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+
+      if (new_page === 'push_user') {
+        get_all_users()
+        get_all_devices()
+        what_requested_devices = "push_user_to_device"
+        what_requested_all_users = "push_user"
+        let y = document.getElementById("push-user");
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("push-user");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+
+      if (new_page === 'get_all_devices') {
+        clear_output()
+        get_all_devices()
+        what_requested_devices = "display_all_active_devices"
+
+        let y = document.getElementById("get-all-devices");
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("get-all-devices");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+
+      if (new_page === 'delete_specific_user') {
+        get_all_users()
+        what_requested_all_users = "delete_specific_user"
+
+        let y = document.getElementById("delete-specific-user");
+        let z = y.querySelectorAll("*");
+        for (i = 0; i < z.length; i++) {
+          z[i].classList.remove("hide");
+        }
+
+        let q = document.getElementsByClassName("delete-specific-user");
+        for (i = 0; i < q.length; i++) {
+          q[i].style.display = "block";
+        }
+      }
+    }
+
+    var ws;
+    console.log(URL)
+    ws = new WebSocket(URL);
+
+    function clear_output() {
+      document.getElementById("add_cmd_rslt").value = ""
+      document.getElementById("dynamicRadioBar").innerHTML = ""
+      document.getElementById("push_cmd_rslt").value = ""
+      document.getElementById("fetch_cmd_rslt").value = ""
+      document.getElementById("generate_cmd_rslt").value = ""
+
+      cleanTableActive(document.getElementById("active_devices"));
+      cleanTableUsersPerDevice(document.getElementById("usersOnDevice"));
+      cleanTableList(document.getElementById("all_users_list"));
+
+      removeOptions(document.getElementById("user_select"));
+      removeOptions(document.getElementById("user_select_p"));
+      removeOptions(document.getElementById("push_device"))
+      removeOptions(document.getElementById("get_user_device"))
+    }
+
+    function removeOptions(selectElement) {
+      var i, L = selectElement.options.length - 1;
+      for (i = L; i >= 0; i--) {
+        selectElement.remove(i);
+      }
+    }
+
+    function cleanTableList(selectElement) {
+      selectElement.innerHTML = "<th class=\"\">Employee</th>\n <th>Email</th>\n <th>Salary</th>\n <th>Monday</th>\n <th>Tuesday</th>\n <th>Wensday</th>\n <th>Thursday</th>\n <th>Friday</th>\n"
+    }
+
+    function cleanTableActive(selectElement) {
+      selectElement.innerHTML = "<th class=\"\">Device Name</th>\n <th class=\"\">Device Id</th>\n <th class=\"\">Device Firmware Version</th>\n <th class=\"\">Uptime</th> <th>Status</th> \n"
+    }
+
+    function cleanTableUsersPerDevice(selectElement) {
+      selectElement.innerHTML = "<th class=\"\">Name</th>\n <th class=\"\">Email</th>\n"
+    }
+
+    function modify_user() {
+      let id = parseInt(document.getElementById("user_select").value);
+      let salary = document.getElementById("emp_salary_u").value;
+      let email = document.getElementById("emp_email_u").value;
+
+      if (isNaN(salary)) {
+        document.getElementById("update_cmd_rslt").value = "Error in salary!"
+        return
+      }
+
+
+      let shift_m_s = ""
+      let shift_m_e = ""
+
+      let shift_t_s = ""
+      let shift_t_e = ""
+
+      let shift_w_s = "" 
+      let shift_w_e = ""
+
+      let shift_th_s = "" 
+      let shift_th_e = ""
+ 
+      let shift_f_s = "" 
+      let shift_f_e = ""
+ 
+
+      if (document.getElementById("monday_time_valid_u").checked) {
+        shift_m_s = document.getElementById("time_monday_s_u").value
+        shift_m_e = document.getElementById("time_monday_e_u").value
+      }
+
+      if (document.getElementById("tuesday_time_valid_u").checked) {
+        shift_t_s = document.getElementById("time_tuesday_s_u").value
+        shift_t_e = document.getElementById("time_tuesday_e_u").value
+      }
+
+      if (document.getElementById("wensday_time_valid_u").checked) {
+        shift_w_s = document.getElementById("time_wensday_s_u").value
+        shift_w_e = document.getElementById("time_wensday_e_u").value
+      }
+
+      if (document.getElementById("thursday_time_valid_u").checked) {
+        shift_th_s = document.getElementById("time_thursday_s_u").value
+        shift_th_e = document.getElementById("time_thursday_e_u").value
+      }
+
+      if (document.getElementById("friday_time_valid_u").checked) {
+        shift_f_s = document.getElementById("time_friday_s_u").value
+        shift_f_e = document.getElementById("time_friday_e_u").value
+      }
+
+      // Make sure at least one day is set  
+      let one_day_set = false;
+
+      let ele = document.getElementsByClassName('time_valid_u')
+      for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked) {
+          one_day_set = true
+          break;
+        }
+      }
+
+      if (one_day_set == false) {
+        document.getElementById("update_cmd_rslt").value = "Must at least add one shift!!"
+        return;
+      }
+
+      if (document.getElementById("monday_time_valid_u").checked) {
+        if (shift_m_s == "" || shift_m_e == "") {
+          document.getElementById("update_cmd_rslt").value = "Error in Monday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("tuesday_time_valid_u").checked) {
+        if (shift_t_s == "" || shift_t_e == "") {
+          document.getElementById("update_cmd_rslt").value = "Error in Tuesday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("wensday_time_valid_u").checked) {
+        if (shift_w_s == "" || shift_w_e == "") {
+          document.getElementById("update_cmd_rslt").value = "Error in Wensday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("thursday_time_valid_u").checked) {
+        if (shift_th_s == "" || shift_th_e == "") {
+          document.getElementById("update_cmd_rslt").value = "Error in Thursday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("friday_time_valid_u").checked) {
+        if (shift_f_s == "" || shift_f_e == "") {
+          document.getElementById("update_cmd_rslt").value = "Error in Friday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("emp_salary_u").value == "") {
+        document.getElementById("update_cmd_rslt").value = "Employee Salary is null"
+        return
+      }
+
+      if (document.getElementById("emp_email_u").value == "") {
+        document.getElementById("update_cmd_rslt").value = "Employee Email must be set"
+        return
+      }
+
+      var new_command = {
+        "Command": "update_user",
+        "Name": name,
+        "Salary": salary,
+        "Email": email,
+        "Id": id,
+        "Shift_m_s": shift_m_s,
+        "Shift_m_e": shift_m_e,
+        "Shift_t_s": shift_t_s,
+        "Shift_t_e": shift_t_e,
+        "Shift_w_s": shift_w_s,
+        "Shift_w_e": shift_w_e,
+        "Shift_th_s": shift_th_s,
+        "Shift_th_e": shift_th_e,
+        "Shift_f_s": shift_f_s,
+        "Shift_f_e": shift_f_e,
+      };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+    function push_user() {
+      let Id = parseInt(document.getElementById("user_select_p").value);
+      let DeviceId = parseInt(document.getElementById("push_device").value);
+      let ReplaceUser = document.getElementById("replace_user").checked;
+
+      if (isNaN(DeviceId)) {
+        document.getElementById("push_cmd_rslt").value = "No device live in the field... Can't do anything"
+        return
+      }
+
+      if (isNaN(Id)) {
+        document.getElementById("push_cmd_rslt").value = "No user selected... can't push!"
+        return
+      }
+
+      var new_command = {
+        "Command": "push_user",
+        "Id": Id,
+        "DeviceId": DeviceId,
+        "Replace": ReplaceUser,
+      };
+      console.log("here")
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+
+      get_all_users()
+      get_all_devices()
+      what_requested_devices = "push_user_to_device"
+      what_requested_all_users = "push_user"
+    }
+
+
+    function hard_reset() {
+      var new_command = {
+        "Command": "hard_reset",
+      };
+
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+
+    function generate_report() {
+      clear_output()
+      console.log("genrating report")
+
+      let year = parseInt(document.getElementById("report_year").value);
+      let month = parseInt(document.getElementById("report_month").value);
+      let period = parseInt(document.getElementById("report_period").value);
+
+
+      if (year == "") {
+        document.getElementById("generate_cmd_rslt").value = "Error: Select a year!"
+        return
+      }
+
+      var new_command = {
+        "Command": "generate_report",
+        "Year": year,
+        "Month": month,
+        "Period": period,
+      };
+
+      dlFileName = year + "_" + month + "_" + period + ".xlsx"
+
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+    function add_user(command) {
+      clear_output()
+      let name = document.getElementById("emp_name").value;
+
+      let salary = document.getElementById("emp_salary").value;
+      let email = document.getElementById("emp_email").value;
+
+      if (isNaN(salary)) {
+        document.getElementById("add_cmd_rslt").value = "Error in salary!"
+        return
+      }
+      
+      let shift_m_s = ""
+      let shift_m_e = ""
+
+      let shift_t_s = ""
+      let shift_t_e = ""
+
+      let shift_w_s = "" 
+      let shift_w_e = ""
+
+      let shift_th_s = "" 
+      let shift_th_e = ""
+ 
+      let shift_f_s = "" 
+      let shift_f_e = ""
+ 
+
+      if (document.getElementById("monday_time_valid").checked) {
+        shift_m_s = document.getElementById("time_monday_s").value
+        shift_m_e = document.getElementById("time_monday_e").value
+      }
+
+      if (document.getElementById("tuesday_time_valid").checked) {
+        shift_t_s = document.getElementById("time_tuesday_s").value
+        shift_t_e = document.getElementById("time_tuesday_e").value
+      }
+
+      if (document.getElementById("wensday_time_valid").checked) {
+        shift_w_s = document.getElementById("time_wensday_s").value
+        shift_w_e = document.getElementById("time_wensday_e").value
+      }
+
+      if (document.getElementById("thursday_time_valid").checked) {
+        shift_th_s = document.getElementById("time_thursday_s").value
+        shift_th_e = document.getElementById("time_thursday_e").value
+      }
+
+      if (document.getElementById("friday_time_valid").checked) {
+        shift_f_s = document.getElementById("time_friday_s").value
+        shift_f_e = document.getElementById("time_friday_e").value
+      }
+
+      // Make sure at least one day is set  
+      let one_day_set = false;
+
+      let ele = document.getElementsByClassName('time_valid')
+      for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked) {
+          one_day_set = true
+          break;
+        }
+      }
+
+      if (one_day_set == false) {
+        document.getElementById("add_cmd_rslt").value = "Must at least add one shift!!"
+        return;
+      }
+
+      if (document.getElementById("monday_time_valid").checked) {
+        if (shift_m_s == "" || shift_m_e == "") {
+          document.getElementById("add_cmd_rslt").value = "Error in Monday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("tuesday_time_valid").checked) {
+        if (shift_t_s == "" || shift_t_e == "") {
+          document.getElementById("add_cmd_rslt").value = "Error in Tuesday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("wensday_time_valid").checked) {
+        if (shift_w_s == "" || shift_w_e == "") {
+          document.getElementById("add_cmd_rslt").value = "Error in Wensday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("thursday_time_valid").checked) {
+        if (shift_th_s == "" || shift_th_e == "") {
+          document.getElementById("add_cmd_rslt").value = "Error in Thursday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("friday_time_valid").checked) {
+        if (shift_f_s == "" || shift_f_e == "") {
+          document.getElementById("add_cmd_rslt").value = "Error in Friday shift hours!"
+          return
+        }
+      }
+
+      if (document.getElementById("emp_name").value == "") {
+        document.getElementById("add_cmd_rslt").value = "Employee name is null! - error"
+        return
+      }
+
+      if (document.getElementById("emp_salary").value == "") {
+        document.getElementById("add_cmd_rslt").value = "Employee Salary is null"
+        return
+      }
+
+      if (document.getElementById("emp_email").value == "") {
+        document.getElementById("add_cmd_rslt").value = "Employee Email must be set"
+        return
+      }
+
+      var new_command = {
+        "Command": "add_user",
+        "Name": name,
+        "Salary": salary,
+        "Email": email,
+        "Shift_m_s": shift_m_s,
+        "Shift_m_e": shift_m_e,
+        "Shift_t_s": shift_t_s,
+        "Shift_t_e": shift_t_e,
+        "Shift_w_s": shift_w_s,
+        "Shift_w_e": shift_w_e,
+        "Shift_th_s": shift_th_s,
+        "Shift_th_e": shift_th_e,
+        "Shift_f_s": shift_f_s,
+        "Shift_f_e": shift_f_e,
+      };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+
+    function add_radio_delete_users(name, email, id) {
+      console.log("adding a new user to dlete user list")
+
+      /* create a radio button */
+      var radioYes = document.createElement("input");
+      radioYes.setAttribute("type", "checkbox");
+
+      /*Set id of new created checkbox button*/
+      radioYes.setAttribute("id", "checkbox" + "_" + name + "_" + email);
+
+      /*Set class of new created radio button*/
+      radioYes.setAttribute("class", "select_user_to_delete");
+
+      /*set unique group name for pair of Yes / No */
+      radioYes.setAttribute("name", id);
+
+      /*creating label for Text to Radio button*/
+      var lblYes = document.createElement("lable");
+
+      /*create text node for label Text which display for Radio button*/
+      var textYes = document.createTextNode(name + "   (" + email + ")");
+
+      /*add text to new create lable*/
+      lblYes.appendChild(textYes);
+
+      /*add radio button to Div*/
+      dynamicRadioBar.appendChild(radioYes);
+
+      /*add label text for radio button to Div*/
+      dynamicRadioBar.appendChild(lblYes);
+
+      /*add space between two radio buttons*/
+      var space = document.createElement("span");
+      space.setAttribute("innerHTML", "  ");
+      dynamicRadioBar.appendChild(space);
+
+      var spaceBr = document.createElement("br");
+      dynamicRadioBar.appendChild(spaceBr);
+    }
+
+
+    function get_all_devices_users() {
+      clear_output()
+      console.log("Sending request to server to delete all users!");
+      var new_command = { Command: "get_all_devices_users", "Name": "nil" };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+
+    function get_all_devices() {
+      clear_output();
+      var new_command = { Command: "get_all_devices" };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+    function get_all_users() {
+      clear_output()
+      console.log("getting all users")
+      var new_command = { Command: "get_all_users", "Name": "nil" };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+    function generate_new_deviceId() {
+      var new_command = { Command: "generate_device_id" };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+    function force_sync() {
+      var new_command = { Command: "force_sync" };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+    function fetch_users_per_device() {
+      cleanTableUsersPerDevice(document.getElementById("usersOnDevice"))
+      let DeviceId = parseInt(document.getElementById("get_user_device").value);
+
+      if (isNaN(DeviceId)) {
+        document.getElementById("fetch_cmd_rslt").value = "No device live in the field... Can't do anything"
+        console.log("Here")
+        return
+      }
+
+      var new_command = { Command: "get_all_users_per_device", "Id": DeviceId };
+      var json_command = JSON.stringify(new_command);
+      ws.send(json_command)
+    }
+
+    function delete_specific_user() {
+      let ele = document.getElementsByClassName('select_user_to_delete')
+      console.log(ele)
+
+      for (i = 0; i < ele.length; i++) {
+        if (ele[i].checked) {
+          console.log('deleting user:' + ele[i].id)
+          let id = parseInt(ele[i].name)
+          let del_command = { Command: "delete_specific_user", "Id": id };
+          del_command = JSON.stringify(del_command);
+          ws.send(del_command)
+        }
+      }
+      //update radio list
+      get_all_users()
+    }
+
+    ws.onopen = function (evt) {
+      console.log("opened!")
+    }
+
+    ws.onclose = function (evt) {
+      console.log("Closied - reoppening!")
+      ws = new WebSocket(URL);
+    }
+
+    ws.onmessage = function (evt) {
+      console.log("recv a message from the server")
+      obj = JSON.parse(evt.data)
+      console.log(obj)
+
+      if (obj.Kind == KIND_COMMAND_RESPONSE) {
+        if (obj.Cmd_Type == DELETE_ALL_USERS_CMD) {
+          if (obj.Cmd_res.Cmd_status == 0) {
+            document.getElementById("dtl_all_cmd_rslt").value = "Deleted All users!"
+          } else {
+            document.getElementById("dtl_all_cmd_rslt").value = "Error Deleting all users!"
+          }
+        }
+        if (obj.Cmd_Type == ADD_USER_CMD) {
+          if (obj.Cmd_res.Cmd_status == 0) {
+            document.getElementById("add_cmd_rslt").value = "Adding user succeeded"
+          } else {
+            let result = "Failed to add user, please try again, \n\nError: " + obj.Cmd_res.Status_details
+            document.getElementById("add_cmd_rslt").value = result
+          }
+        }
+        if (obj.Cmd_Type == UPDATE_USER_CMD) {
+          if (obj.Cmd_res.Cmd_status == 0) {
+            document.getElementById("update_cmd_rslt").value = "Updating user succeeded"
+          } else {
+            let result = "Failed to update user, please try again, \n\nError: " + obj.Cmd_res.Status_details
+            document.getElementById("update_cmd_rslt").value = result
+          }
+        }
+        if (obj.Cmd_Type == PUSH_USER_CMD) {
+          if (obj.Cmd_res.Cmd_status == 0) {
+            document.getElementById("push_cmd_rslt").value = "Adding user succeeded"
+          } else {
+            let result = "Failed to add user, please try again, \n\nError: " + obj.Cmd_res.Status_details
+            document.getElementById("push_cmd_rslt").value = result
+          }
+        }
+        if (obj.Cmd_Type == GENERATE_REPORT) {
+          if (obj.Cmd_res.Cmd_status == 0) {
+            console.log("starting download...")
+            document.getElementById("generate_cmd_rslt").value = "Report Generated"
+
+            /* the following line actually downloads the file */
+            /* this is a hack, it will first change URL to the dowload link */
+            /* this will close the websocket, we can then open it again by giong back home */
+            download(dlFileName)
+            sleep(1000)
+            window.location.href = HOME;
+
+
+          } else {
+            document.getElementById("generate_cmd_rslt").value = obj.Cmd_res.Status_details
+          }
+        }
+      }
+
+      if (obj.Kind === KIND_GET_USER) {
+        if (what_requested_all_users == "delete_specific_user") {
+          add_radio_delete_users(obj.Employee.Name, obj.Employee.Email, obj.Employee.Id)
+        } else if (what_requested_all_users == "modify_user") {
+          var x = document.getElementById("user_select");
+
+          var option = document.createElement("option");
+          option.text = obj.Employee.Name;
+          option.name = obj.Employee.Name;
+          option.value = obj.Employee.Id;
+          x.add(option);
+        } else if (what_requested_all_users == "push_user") {
+          var x = document.getElementById("user_select_p");
+
+          var option = document.createElement("option");
+          option.text = obj.Employee.Name;
+          option.name = obj.Employee.Name;
+          option.value = obj.Employee.Id;
+          x.add(option);
+        } else if (what_requested_all_users == "list_users"){
+          var table = document.getElementById("all_users_list");
+          var row = table.insertRow(-1);
+
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+     
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+          var cell6 = row.insertCell(5);
+          var cell7 = row.insertCell(6);
+          var cell8 = row.insertCell(7);
+
+          //employee details 
+          cell1.innerHTML = obj.Employee.Name;
+          cell2.innerHTML = obj.Employee.Email;  
+          cell3.innerHTML = obj.Employee.Salary;
+        
+          //shifts 
+          cell4.innerHTML = obj.Shift_Details.Shift_m 
+          cell5.innerHTML = obj.Shift_Details.Shift_t
+          cell6.innerHTML = obj.Shift_Details.Shift_w
+          cell7.innerHTML = obj.Shift_Details.Shift_th
+          cell8.innerHTML = obj.Shift_Details.Shift_f 
+ 
+        }
+      }
+
+      if (obj.Kind === KIND_GET_DEVICES) {
+        if (what_requested_devices == "push_user_to_device") {
+          var x = document.getElementById("push_device");
+          var option = document.createElement("option");
+          option.text = obj.Device.Device_name;
+          option.name = obj.Employee.Device_name;
+          option.value = obj.Device.DeviceId;
+          x.add(option);
+        } else if (what_requested_devices == "get-users-from-device") {
+          var x = document.getElementById("get_user_device");
+          var option = document.createElement("option");
+          option.text = obj.Device.Device_name;
+          option.name = obj.Employee.Device_name;
+          option.value = obj.Device.DeviceId;
+          x.add(option);
+        } else if (what_requested_devices == "display_all_active_devices") {
+          var table = document.getElementById("active_devices");
+          var row = table.insertRow(-1);
+
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
+          var cell4 = row.insertCell(3);
+          var cell5 = row.insertCell(4);
+
+          cell1.innerHTML = obj.Device.Device_name;
+          cell2.innerHTML = obj.Device.DeviceId;
+          cell3.innerHTML = obj.Device.Fw_version;
+          cell4.innerHTML = obj.Device.UpTime;
+
+          if (obj.Device.Bricked == 0){
+            cell5.innerHTML = "OK";
+          } else {
+            cell5.innerHTML = "Bricked #" + obj.Device.Bricked;
+            cell5.style.backgroundColor = "red";
+          }
+        }
+      }
+
+      if (obj.Kind === KIND_GET_USERS_PER_DEVICE) {
+        // Find a <table> element with id="myTable":
+        var table = document.getElementById("usersOnDevice");
+
+        // Create an empty <tr> element and add it to the 1st position of the table:
+        var row = table.insertRow(-1);
+
+        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+
+        // Add some text to the new cells:
+        cell1.innerHTML = obj.Employee.Name;
+        cell2.innerHTML = obj.Employee.Email;
+      }
+
+      if (obj.Kind === GET_ALL_USERS_ON_DEVICE_FINAL) {
+        if (obj.Cmd_res.Cmd_status == 0) {
+          document.getElementById("fetch_cmd_rslt").value = "Fetching users succeeded"
+        } else {
+          let result = "Failed to fetch users, please try again? Try refreshing the page \n\nError: " + obj.Cmd_res.Status_details
+          document.getElementById("fetch_cmd_rslt").value = result
+        }
+      }
+
+      if (obj.Kind === GENERATE_DEVICE_ID) {
+        document.getElementById("deviceId_replace_box").innerHTML = "DeviceId = " + obj.New_Device_Id
+        console.log("got a deviceId command", obj.deviceId)
+      }
+    }
+
+
+    ws.onerror = function (evt) {
+    }
+
+
+  </script>
+
+</html>

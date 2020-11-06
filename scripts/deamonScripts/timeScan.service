@@ -1,0 +1,9 @@
+[Unit]
+Description=TimeScan server + packet core
+
+[Service]
+ExecStart=/bin/bash /usr/local/timeScan/timeScan-Daemon.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

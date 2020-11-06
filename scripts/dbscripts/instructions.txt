@@ -1,0 +1,1 @@
+run dump.sh, will give db_dump.sql, copy this to the new server, in this folder on that server, and go, ./import.sh

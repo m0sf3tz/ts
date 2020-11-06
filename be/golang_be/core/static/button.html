@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>some shit</head>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 80%;
+    margin: 0 20%; 
+    padding: 10px;
+  }
+
+  .grid-item {
+    border: 10px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  table {
+      font-family: arial, sans-serif;
+        border-collapse: collapse;
+          width: 100%;
+  }
+
+  td, th {
+      border: 1px solid #dddddd;
+        text-align: left;
+          padding: 8px;
+  }
+
+  tr:nth-child(even) {
+      background-color: #dddddd;
+  }
+</style>
+<body>
+    <h1>Select Command</h1>
+
+    <label for="cmd">Choose a command:</label>
+
+    <select id="cmd" onchange="display_cmd_options()">
+        <option value="blank"></option>
+        <option value="add_user">Add User</option>
+        <option value="delete_users">Delete User</option>
+        <option value="get_login">Get Logins</option>
+    </select>
+  
+	 <div class="grid-container">
+		<div class="grid-item"><p id="java_canvas"> </p></div> 
+		<div class="grid-item"><p id="cmd_output"> </p></div>
+	 </div> 
+   
+   <div id="chart"><div>
+   <table id="myTable">
+ 	  <tr>
+			<th>Employee</th>
+			<th>Temperature</th>
+			<th>Time</th>
+		</tr>
+	</table>
+
+
+    <!---This paragraph is filled up by javascript onchange of dropdown list -->
+
+
+<script>
+  const KIND_LOGIN             = 0;
+  const KIND_LOGIN_UPDATE      = 1;
+  const KIND_COMMAND_RESPONSE  = 2;
+
+  const ADD_USER_CMD = (0)
+  const DELETE_ALL_USERS_CMD = (1)
+  const GET_LOGINS = (2)
+
+
+
+  var previous_command;
+  var ws;
+  ws = new WebSocket("ws://localhost:3000/upgrade");
+
+
+  function clear_output(){
+    document.getElementById("cmd_output").innerHTML = ""
+  }
+
+  function add_user(){
+    clear_output()
+    console.log ("Sending request to server to add user!");
+    let name = document.getElementById("name").value;
+    var new_command = {Command:"add_user", "Name":name};
+    var json_command = JSON.stringify(new_command);
+    ws.send(json_command)
+  }
+
+  function delete_all_users(){
+    clear_output()
+    console.log ("Sending request to server to delete all users!");
+    var new_command = {Command:"delete_all_users", "Name":"nil"};
+    var json_command = JSON.stringify(new_command);
+    ws.send(json_command)
+  }
+
+
+	function get_login_times(){
+			var new_command = {Command:"get_logins", "Name":"nil"};
+      var json_command = JSON.stringify(new_command);
+			previous_command = "get_logins"
+      ws.send(json_command)
+  }
+	
+
+	ws.onopen = function(evt) {
+      console.log("opened!")
+  }
+
+  ws.onclose = function(evt) {
+      ws = null;
+  }
+
+  ws.onmessage = function(evt) {
+     console.log("recv a message from the server")
+		 obj =  JSON.parse(evt.data)
+     console.log(obj)
+
+    if(obj.Kind == KIND_COMMAND_RESPONSE){
+      if (obj.Cmd_Type == DELETE_ALL_USERS_CMD){
+        if (obj.Cmd_res.Cmd_status == 0){
+         document.getElementById("cmd_output").innerHTML = "Deleted All users!"
+        }else{
+          document.getElementById("cmd_output").innerHTML = "Error Deleting all users!"
+        }
+      }
+      if (obj.Cmd_Type == ADD_USER_CMD){
+        if (obj.Cmd_res.Cmd_status == 0){
+         document.getElementById("cmd_output").innerHTML = "Added user!"
+        }else{
+          document.getElementById("cmd_output").innerHTML = "Failed to add user!"
+        }
+      }
+    }
+    
+		if (obj.Kind === KIND_LOGIN || obj.Kind == KIND_LOGIN_UPDATE){	
+				var table = document.getElementById("myTable");
+  			var row = table.insertRow(-1);
+  			var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				cell1.innerHTML = obj.Login.User_name;
+				cell2.innerHTML = obj.Login.Temperature;
+				cell3.innerHTML = obj.Login.Time;
+		}
+
+  }
+
+  ws.onerror = function(evt) {
+  }
+
+  function display_cmd_options(s){
+    var x = document.getElementById("cmd").value;
+    if (x == "add_user"){
+      console.log("add user");
+      document.getElementById("java_canvas").innerHTML  = ""; // first blank it out
+      document.getElementById("java_canvas").innerHTML  = "<label for=\"name\">Employee Name:</label>";
+      document.getElementById("java_canvas").innerHTML += "<input type=\"text\" id=\"name\" name=\"name\"><br><br>";
+      document.getElementById("java_canvas").innerHTML += "<button onclick=\"add_user()\" id=\"issue_cmd\">Add User</button>";
+    }else if (x == "delete_users"){
+      document.getElementById("java_canvas").innerHTML  = ""; // first blank it out
+      document.getElementById("java_canvas").innerHTML  = "<label for=\"fname\">Are you sure you want to delete everything</label>";
+      document.getElementById("java_canvas").innerHTML += "<button onclick=\"delete_all_users()\" id=\"issue_cmd\">Delete All</button>";
+    }else if (x == "get_login"){
+		  get_login_times()
+  };
+};
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+after running the init scripts, connect to the dabase..
+\c timescan
+select * fromt test; #shouold show 666 after running the test.go

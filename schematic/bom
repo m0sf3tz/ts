@@ -1,0 +1,19 @@
+PART              DETAILS                                        (QUANTITY)
+
+SJ-3523-SMT-TR    (audio-jack)                                   (x1)
+SF-1206S050-2     (fuse, 5000ma - slow burn, 1206)               (x1)
+LD1086DT33TR      (LDO)                                          (x1)
+CD1206-B2100      (shottkey diode)                               (x1)
+PESD5V0S1BA       (TSV)                                          (x4)
+PPPC061LGBN-RC    (right angle header, parallax)                 (x1)
+RP3502ARED        (push botton)                                  (x2)
+6941xx301002      (barrel jack)                                  (x1)
+
+3216 (metric), 1206 (imp)
+10K     (x3)
+20Ohms  (x1)
+4.7K    (x2)
+
+1uF     (x2)
+100nF   (x2)
+(10uF)  (x4)

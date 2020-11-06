@@ -1,0 +1,6 @@
+run top level as such
+sudo -E ./masterScript.sh
+
+
+#Manual steps, must update the socket address in main.html (in core) to point to the correct address for the weboscket on the client side (for javascript)
+:

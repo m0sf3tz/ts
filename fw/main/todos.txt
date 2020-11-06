@@ -1,0 +1,2 @@
+add device_id in NV subsystem
+  -> make it such that after format the NV for ID is restored
