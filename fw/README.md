@@ -1,4 +1,4 @@
-# FW (That means FIRMWARE for you, company buyer)
+# FW
 
 Docker aside, to get going with FW development:
 
